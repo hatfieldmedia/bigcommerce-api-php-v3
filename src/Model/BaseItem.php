@@ -56,6 +56,7 @@ class BaseItem implements ArrayAccess
         'coupon_amount' => 'float',
         'list_price' => 'float',
         'sale_price' => 'float',
+        'original_price' => 'float',
         'extended_list_price' => 'float',
         'extended_sale_price' => 'float',
         'options' => '\BigCommerce\Api\v3\Model\ProductOption[]'
@@ -86,6 +87,7 @@ class BaseItem implements ArrayAccess
         'coupon_amount' => 'coupon_amount',
         'list_price' => 'list_price',
         'sale_price' => 'sale_price',
+        'original_price' => 'original_price',
         'extended_list_price' => 'extended_list_price',
         'extended_sale_price' => 'extended_sale_price',
         'options' => 'options'
@@ -111,6 +113,7 @@ class BaseItem implements ArrayAccess
         'coupon_amount' => 'setCouponAmount',
         'list_price' => 'setListPrice',
         'sale_price' => 'setSalePrice',
+        'original_price' => 'setOriginalPrice',
         'extended_list_price' => 'setExtendedListPrice',
         'extended_sale_price' => 'setExtendedSalePrice',
         'options' => 'setOptions'
@@ -136,6 +139,7 @@ class BaseItem implements ArrayAccess
         'coupon_amount' => 'getCouponAmount',
         'list_price' => 'getListPrice',
         'sale_price' => 'getSalePrice',
+        'original_price' => 'getOriginalPrice',
         'extended_list_price' => 'getExtendedListPrice',
         'extended_sale_price' => 'getExtendedSalePrice',
         'options' => 'getOptions'
@@ -172,6 +176,7 @@ class BaseItem implements ArrayAccess
      */
     public function __construct(array $data = [])
     {
+        dd($data);
         $this->container['id'] = array_key_exists('id', $data) ? $data['id'] : null;
         $this->container['parent_id'] = array_key_exists('parent_id', $data) ? $data['parent_id'] : null;
         $this->container['variant_id'] = array_key_exists('variant_id', $data) ? $data['variant_id'] : null;
@@ -187,6 +192,7 @@ class BaseItem implements ArrayAccess
         $this->container['coupon_amount'] = array_key_exists('coupon_amount', $data) ? $data['coupon_amount'] : null;
         $this->container['list_price'] = array_key_exists('list_price', $data) ? $data['list_price'] : null;
         $this->container['sale_price'] = array_key_exists('sale_price', $data) ? $data['sale_price'] : null;
+        $this->container['original_price'] = array_key_exists('original_price', $data) ? $data['original_price'] : null;
         $this->container['extended_list_price'] = array_key_exists('extended_list_price', $data) ? $data['extended_list_price'] : null;
         $this->container['extended_sale_price'] = array_key_exists('extended_sale_price', $data) ? $data['extended_sale_price'] : null;
         $this->container['options'] = array_key_exists('options', $data) ? $data['options'] : null;
@@ -544,6 +550,28 @@ class BaseItem implements ArrayAccess
 
         return $this;
     }
+
+    /**
+     * Gets original_price
+     * @return float
+     */
+    public function getOriginalPrice()
+    {
+        return $this->container['original_price'];
+    }
+
+    /**
+     * Sets original_price
+     * @param float $original_price An item's original price is the same as the product default price in the admin panel.
+     * @return $this
+     */
+    public function setOriginalPrice($original_price)
+    {
+        $this->container['original_price'] = $original_price;
+
+        return $this;
+    }
+
 
     /**
      * Gets extended_list_price
