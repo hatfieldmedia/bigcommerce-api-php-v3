@@ -176,7 +176,6 @@ class BaseItem implements ArrayAccess
      */
     public function __construct(array $data = [])
     {
-        dd($data);
         $this->container['id'] = array_key_exists('id', $data) ? $data['id'] : null;
         $this->container['parent_id'] = array_key_exists('parent_id', $data) ? $data['parent_id'] : null;
         $this->container['variant_id'] = array_key_exists('variant_id', $data) ? $data['variant_id'] : null;
